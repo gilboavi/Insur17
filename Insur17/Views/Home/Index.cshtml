@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Client>
+@{
+    Layout = "_Layout";
+    var title = "READ Teacher";
+    ViewData["Title"] = title;
+}<h2>@title</h2>
+<input type="text" id="n1" />
+<h3><a asp-action="Create" class="btn btn-sm btn-secondary">Create</a></h3>
+<table class="table table-bordered table-sm table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Sex</th>
+            <th>Birthday</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model == null)
+        {
+        <tr>
+            <td colspan="7" class="text-center">No Model Data</td>
+        </tr>
+        }
+        else
+        {
+        @foreach (var p in Model)
+            {
+        <tr>
+            <td>@p.id</td>
+            <td>@p.FirstName</td>
+            <td>@p.LastName</td>
+            <td>@p.Sex</td>
+            <td>@string.Format("{0: dd/mm/yyyy}", p.Birthday)</td>
+
+            <td><a asp-action="Update" asp-route-id="@p.id">Update</a></td>
+            <td>
+                <form asp-action="Delete" method="post" asp-route-id="@p.id">
+                    <button>Delete</button>
+                </form>
+            </td>
+        </tr>
+            }
+        }
+    </tbody>
+</table>
+<script>
+    $("#n1").click(function(){
+        alert("from home");
+    })
+</script>

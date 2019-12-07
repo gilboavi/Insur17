@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "RefreshingAjaxContainer";
+    Layout = null;
+}
+<script type="text/javascript">
+
+    //    function GetEdit(_serial) {
+    //         Ajax.ActionLink("עריכה", "Edit", "Conversation",
+    //                                   new { id : _serial },
+    //                                 new AjaxOptions()
+    //                                 {
+    //                                     HttpMethod = "Get",
+    //                                     UpdateTargetId = "ConversationFollowUpDiv",
+    //                                     OnSuccess = "OpenConversationFollowUpDiv"
+    //                                 });
+    //    }
+
+    function GetReminderConversations() {
+
+        var refreshUrl = '@Url.Action("Reminder1", "Reminder")';
+        $.get(
+                refreshUrl,
+                 null,
+                function (data) {
+                    //  alert(data);
+                    if (data != "no message") {
+                        //                        $.colorbox({
+                        //                            html: data
+                        //                        });
+                        //                        $.colorbox.resize({ width: "100%", height: "100%" });
+
+
+                        $("#div_reminder_alert #annotation").html(data);
+                        $("#div_reminder_alert").slideDown();
+                        setDatePicker();
+
+                    }
+
+
+
+
+                });
+
+                window.setTimeout(function () { GetReminderConversations(); },100000);
+    }
+
+    //    function GetReminderConversations() {
+
+    //        var targetUrl = '/Conversation/ReminderConversations/'
+    //                            window.location = targetUrl;
+
+
+
+    //                window.setTimeout(function () { GetReminderConversations(); }, 10000);
+    //            }
+
+ //  var myVar = setInterval(function () { GetReminderConversations() }, 60000);
+    function myTimer() {
+        alert('kkk');
+    }
+    //  setInterval(GetReminderConversations, 60000000);
+
+    function GetRefreshedData() {
+
+        var refreshUrl = '@Url.Action("GetConversationSendToUser", "Conversation")';
+        $.post(
+                refreshUrl,
+                 null,
+                function (data) {
+
+                    $("#refreshingContainer").html(data);
+                },
+                 "html");
+
+        window.setTimeout(function () { GetRefreshedData(); }, 60000);
+    }
+
+  //  setInterval(GetRefreshedData, 60000);
+
+
+    $(document).ready(function () {
+       
+        GetRefreshedData();
+        GetReminderConversations();
+      
+        //      GetRefreshedData();
+        //        setInterval(function () {
+
+        //            window.location("Conversation/ReminderConversations/");
+        //           
+        //        }, 3000); //Refreshes every 30 seconds
+
+
+
+        //  $.ajaxSetup({ cache: false });  //Turn off caching
+
+        //   GetReminderConversations();
+
+    });
+</script>
+<div id="refreshingContainer">
+    אין הודעות
+</div>
