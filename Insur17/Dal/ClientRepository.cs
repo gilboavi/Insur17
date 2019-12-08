@@ -54,6 +54,7 @@ namespace Insur17.Dal
             using (SqlConnection connection = new SqlConnection(MyStringConnection))
             {
                 //SqlDataReader
+                partialClientName="'"+ partialClientName + "'";
                 connection.Open();
                 string sql = string.Format(sql_for_auto_complete, partialClientName);
               //  string sql = "Select * From Clients where FirstName Like"+ " '%"+ partialClientName+"' ";
@@ -90,9 +91,11 @@ namespace Insur17.Dal
             {
                 //SqlDataReader
                 connection.Open();
-
+                //var sql = sql_conversation;
+                //var si = 999;
                 string sql = "Select * From Clients where FirstName='אבי' ";
                 SqlCommand command = new SqlCommand(sql, connection);
+            //    command.Parameters.Add("@serial", System.Data.SqlDbType.Int, 4).Value = si;
                 using (SqlDataReader dataReader = command.ExecuteReader())
                 {
                     while (dataReader.Read())

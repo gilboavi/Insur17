@@ -25,33 +25,21 @@
     <script src="~/lib/jquery/dist/jquery.js"></script>
 
 </head>
-<body><input type="hidden" id="client_serial" name="client_serial" />
+<body>
     <nav class="navbar navbar-avi">
 
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
 
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="./../Home/">ראשי</a>
-            </div>
+          
             
                       
                   
               
-            @*  <form class="navbar-form navbar-left" role="search">
-
-        <input type="text" name="q" id="q" style="width: 250px;" data-autocomplete="@Ul.Action("ClientsListForAutocomplete", "Client")" value="" />
-        </form>   *@
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li> <input class="typeahead form-control" style="margin:0px auto;width:200px;" type="text" /></li>
+        
+            <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-header">
+                    <li>  <a  href="./../Home/">ראשי</a></li>
                     <li id="clientTag">@Html.ActionLink("לקוח", "Index", "Client")</li>
                     <li id="DocInFilesTab">@Html.ActionLink("שיוך מסמכים", "DocInFilesNew", "Document")</li>
                     <li class="dropdown">

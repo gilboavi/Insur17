@@ -1,5 +1,41 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
+
+div {
+    padding-top: 3px;
+    padding-right: 5px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+}
+
+
+.navbar-header a.navbar-brand {
+    width: 100%;
+    text-align: center;
+    color: orange;
+  
+    font-weight: bold;
+}
+
+.my_lable{
+   color: blue;
+   text-align: right;
+   font-family: "Arial";
+   font-size:20px;
+}
+.my_header {
+    color: blue;
+    text-align: right;
+    font-family: "Arial";
+    font-size: 20px;
+}
+.customDiv{
+    margin:3px;
+    min-height:300px;
+    text-align:right;
+    
+}
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;

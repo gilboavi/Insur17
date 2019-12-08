@@ -109,10 +109,10 @@ namespace Insur17.Controllers
         /// </summary>
         /// <param name="term"></param>
         /// <returns></returns>
-        public List<Client> ClientsListForAutocomplete(string query)
+        public List<Client> ClientsListForAutocomplete(string term)
         {
 
-            var model = _ClientRepository.GetClientsListByPartialClientName(query);
+            var model = _ClientRepository.GetClientsListByPartialClientName(term);
             return model;
 
 

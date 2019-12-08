@@ -11,35 +11,41 @@
 
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-rtl.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+
+    <link href="~/css/select2.css" rel="stylesheet" />
 
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap3-typeahead.min.js"></script>
+    <script src="~/js/select2.js"></script>
     <script src="~/js/base_functions.js"></script>
 
-    <script type="text/javascript" language="javascript">    </script>
+    <script type="text/javascript" language="javascript"></script>
 
 </head>
-<body>
-    <div style="margin:15px 10px;">
-        חיפוש &nbsp
-        <input class="typeahead " style="width:200px;" type="text" />
-    </div>
-    <button><span class="glyphicon glyphicon-search"></span>Search</button>
-    <!--     <nav class="navbar navbar-default navbar-fixed-top  " role="navigation"> !-->
-    <nav class="navbar  pull-right" role="navigation">
+<div class="container">
+    <nav class="navbar  pull-right navbar-fixed-top" role="navigation">
 
         <!-- Brand and toggle get grouped for better mobile display -->
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav font_white navbar-right">
-                <form class="navbar-form navbar-left" action="">
-                    <div class="form-group">
-                        <li>  <input type="button" class="menu_bottun" id="hide_show_client_details" value="פרטי לקוח" /></li>
+        <div class="navbar-collapse navbar-ex1-collapse ">
+
+           
+            <ul class="nav navbar-nav  ">
+              
+                <li>
+                    <div style="margin:15px 10px;">
+                        חיפוש &nbsp
+                        <input id="typehead" type="hidden" class="select2width" style="width:200px" />
+                        <!--
+                        <input class="typeahead " style="width:200px;" type="text" id="search_client" name="search_client" />
+    -->
                     </div>
-                </form>
+                </li>
                 <li> <a href="/">    ראשי    </a> </li>
-               
+
                 <li class="nav-item"><a href="javscript:void(0)" avi-menu="conversation">שיחות </a></li>
                 <li><a href="javscript:void(0)" avi-menu="my_meeting">פגישות</a></li>
                 <li><a href="javscript:void(0)" avi-menu="policy">פוליסות </a></li>
@@ -57,10 +63,19 @@
 
                     </ul>
                 </li>
+
+
             </ul>
-            <!--   <h2 id="full_name" ></h2>  -->
+          
         </div>
     </nav>
+</div>
+<input type="hidden" />
+<body>
+
+    <!--  <button><span class="glyphicon glyphicon-search"></span>Search</button>  !-->
+    <!--     <nav class="navbar navbar-default navbar-fixed-top  " role="navigation"> !-->
+
 
     <div class="container body-content">
         @RenderBody()

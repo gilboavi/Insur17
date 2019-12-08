@@ -1,20 +1,47 @@
-﻿<!--client -->
-@{
+﻿@{
     Layout = "_LayoutClient";
-    var title = "לקוחות";
-    ViewData["Title"] = title;
-}<h2>@title</h2>
+}
+<input type="text" id="client_serial" />
 
-<head>
-    <meta charset="utf-8" />
-    <title>hhhhhh?</title>
-</head>
-<body>
-    <!--  <form id="FormClient22" name="FormClient" onsubmit="return false;">  -->
-  
+<div class="container">
+    <div class="float-right">
+        <div class="row">
+            <div class="col-md-2 ">
+                <div class="my_lable">שם מלא</div>
+                <div class="my_lable">תעודת זהות</div>
+                <div class="my_lable">כתובת</div>
+                <div class="my_lable">עישון</div>
+                <div class="my_lable">תאריך לידה</div>
+                <div class="my_lable"> סטוטס</div>
+
+            </div>
+            <div class="col-md-10 ">
+                <div class="container">
+                    <table class="table">
+                        <thead>
+                            <tr class="my_header">
+                                <th>תאריך</th>
+                                <th>תקציר השיחה &nbsp <input type="text" class="black_text" id="table_conversation_comment" size="10" onkeyup="filter_my_table('table_conversation')" /></th>
+                                <th>מטרת השיחה</th>
+                                <th>שם מטפל</th>
+                                <th>סטוטס</th>
+                                <th>מ.פוליסה</th>
+
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
-</body>
+
+
 <!-- </form>  -->
 <!--
 <$- include("./edit_template") $>
