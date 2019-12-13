@@ -1,0 +1,78 @@
+﻿@model List<ConversationWithParam>
+
+@{
+    // used in Conversation Index
+    ViewBag.Title = "ConversationList";
+    //  Layout = null;
+}
+
+
+
+    <table id="CreateConversationTable" class="display dataTable" cellspacing="0" width="100%" aria-describedby="myTable_info" style="width: 100%;">
+        <thead>
+            <tr>
+
+                <th style="width:5%">תאריך </th>
+                <th style="width:80%">תקציר השיחה</th>
+                <th style="width:5%"> רפרנט</th>
+                <th style="width:5%">סטטוס </th>
+                <th style="width:5%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var myStyle = "editor-label_Immediately";
+                if (item.Done == true)
+                {
+                    myStyle = "";
+                }
+                else
+                    if (item.Immediately == true)
+                {
+                    myStyle = "editor-label_Immediately";
+                }
+                else
+                {
+                    myStyle = "editor-label_undone";
+                }
+
+                <tr ondblclick="ShoeFollowUp(@item.Serial)" class=@myStyle>
+                    <td style="width:5%">
+                        @String.Format("{0:dd/MM/yyyy}", item.Datee)
+
+                    </td>
+
+
+                    <td style="width:70%">
+                        @*  avi260714*@
+                        <span class="second">  @Html.Raw(item.SummaryOfConversation) </span>
+                    </td>
+                    <td style="width:5%">
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td style="width:10%">
+                        @Html.DisplayFor(modelItem => item.TypeFollowupConversationName)
+                    </td>
+
+                    <td class="notPrint">
+
+                        <a href="#" onclick="GetDataToColorbobByParams({id:@item.Serial},'/Conversation/Edit/',function(){setDatePicker(); showTextEdit();})">
+                            <img alt="" class="myImage" src='@Url.Content("~/Content/images/edit1.png")' />
+                        </a>
+
+                        <br />
+                        <a href="#" onclick="GetDataToColorbobByParams({id: @item.Serial},'/FollowUpConversation/Index/')">מעקב</a>
+
+                        &nbsp
+                        <br />
+                       
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+  
+

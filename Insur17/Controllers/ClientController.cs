@@ -126,6 +126,14 @@ namespace Insur17.Controllers
         }
         #endregion
 
+        public FullClient GetFullClientByClientSerial(int clientSerial)
+        {
+            FullClient fullClient = new FullClient();
+            var model = _ClientRepository.GetFullClientByClientSerial(clientSerial);
+
+            return fullClient;
+        }
+
         #region GetClientsListByPartialClientName - used in ClientsListForAutocomplete ActionResult
         /// <summary>
         ///  gets full name and ClientSerial for autocomplate from ClientViewModel

@@ -1,44 +1,106 @@
-﻿@{
-    Layout = "_LayoutClient";
+﻿
+@{
+
+    <title>@ViewBag.Title</title>;
+    Layout = "";
+
 }
-<input type="text" id="client_serial" />
 
-<div class="container">
-    <div class="float-right">
-        <div class="row">
-            <div class="col-md-2 ">
-                <div class="my_lable">שם מלא</div>
-                <div class="my_lable">תעודת זהות</div>
-                <div class="my_lable">כתובת</div>
-                <div class="my_lable">עישון</div>
-                <div class="my_lable">תאריך לידה</div>
-                <div class="my_lable"> סטוטס</div>
 
-            </div>
-            <div class="col-md-10 ">
-                <div class="container">
-                    <table class="table">
-                        <thead>
-                            <tr class="my_header">
-                                <th>תאריך</th>
-                                <th>תקציר השיחה &nbsp <input type="text" class="black_text" id="table_conversation_comment" size="10" onkeyup="filter_my_table('table_conversation')" /></th>
-                                <th>מטרת השיחה</th>
-                                <th>שם מטפל</th>
-                                <th>סטוטס</th>
-                                <th>מ.פוליסה</th>
+<!DOCTYPE html>
+<html dir="rtl">
+    <head>
 
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
+        <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+        <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/lib/bootstrap/dist/css/bootstrap-rtl.css" rel="stylesheet" />
+        <link href="~/css/site.css" rel="stylesheet" />
 
-                    </table>
+        <link href="~/css/select2.css" rel="stylesheet" />
+
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap3-typeahead.min.js"></script>
+        <script src="~/js/select2.js"></script>
+        <script src="~/js/base_functions.js"></script>
+
+        <script type="text/javascript" language="javascript"></script>
+    </head>
+    <body>
+        <form id="FormClient22" name="FormClient" onsubmit="return false;">
+
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-3">
+
+                        חיפוש &nbsp
+                        <input id="typehead" type="hidden" class="select2width" style="width:200px" />
+
+
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="nav nav-tabs">
+
+                            <ul class="nav nav-tabs">
+
+
+                                <li> <a href="/">    ראשי   </a> </li>
+                                <li class="nav-item"><a href="javscript:void(0)" avi-menu="stam">סתם </a></li>
+                                <li class="nav-item"><a href="javscript:void(0)" avi-menu="conversation">שיחות </a></li>
+                                <li class="nav-item"><a href="javscript:void(0)" avi-menu="my_meeting">פגישות</a></li>
+                                <li class="nav-item"><a href="javscript:void(0)" avi-menu="policy">פוליסות </a></li>
+                                <li class="nav-item"><a href="javscript:void(0)" avi-menu="kupa">גמל</a></li>
+                                <li class="nav-item"><a href="javscript:void(0)" avi-menu="documents">מסמכים</a></li>
+                                <li class="nav-item"><a href="javscript:void(0)" avi-menu="search">חיפוש</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">תיק לקוח <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="javscript:void(0)" avi-menu="police_reort_menu">דוח ביטוחים</a></li>
+                                        <li><a href="javscript:void(0)" avi-menu="hishtalmut_menu">דוח קרנות השתלמות</a></li>
+                                        <li><a href="javscript:void(0)" avi-menu="kizui_be_mutzar_menu">כיסויים בפוליסה </a></li>
+                                        <li><a href="javscript:void(0)" avi-menu="yitrot_le_tkupa_menu">יתרות לפי תקופה</a></li>
+                                        <li><a href="javscript:void(0)" avi-menu="kupa_menu">צפי קצבאות</a></li>
+
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+
+                        </div>
+                    </div>
                 </div>
             </div>
+            <input type="text" id="client_serial" />
 
-        </div>
-    </div>
-</div>
+            <div class="container">
+                <div class="float-right">
+                    <div class="row">
+                        <div class="col-md-2 ">
+                            <div id="fullName" class="my_lable">שם מלא</div>
+                            <div id="client_id" class="my_lable">תעודת זהות</div>
+                            <div id="adderss" class="my_lable">כתובת</div>
+                            <div id="smok" class="my_lable">עישון</div>
+                            <div id="birthday" class="my_lable">תאריך לידה</div>
+                            <div id="status" class="my_lable"> סטוטס</div>
 
+                        </div>
+                        <div class="col-md-10 ">
+                            <div class="container">
+                                <div id="coversationDiv"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+
+             
+            </div>
+        </form>
+</body>
+</html>
 
 
 

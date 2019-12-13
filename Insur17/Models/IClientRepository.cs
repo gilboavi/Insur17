@@ -10,5 +10,8 @@ namespace Insur17.Models
         List<Client> get_clients();
         Client get_client_by_serial(int serial);
         List<Client> GetClientsListByPartialClientName(string partialClientName);
+        FullClient GetFullClientBySerial(int serial);
+      
+        FullClient GetFullClientByClientSerial(int clientSerial);
     }
 }

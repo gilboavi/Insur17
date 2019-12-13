@@ -34,8 +34,11 @@ namespace Insur17
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
             services.AddSingleton<IClientRepository>(new ClientRepository(Configuration));
-          //  services.AddSingleton<IClientRepository, ClientRepository>();
+            //   services.AddSingleton<IConversationRepository>(new ConversationRepository(Configuration));
+
+             services.AddSingleton<IConversationRepository, ConversationRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

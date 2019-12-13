@@ -1,51 +1,124 @@
-﻿@model IEnumerable<Client>
+﻿
+@model FullConversation
+
 @{
-    Layout = "_Layout";
-    var title = "לקוחות";
-    ViewData["Title"] = title;
-}<h2>@title</h2>
+    // index Conversation
+    ViewBag.Title = "";
+    Layout = null;
+    string FullName = " ";// Model.ClientFullName;
+}
 
-<input type="text" id="n1" />
-<h3><a asp-action="Create" class="btn btn-sm btn-secondary">Create</a></h3>
-<table class="table table-bordered table-sm table-striped">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>FirstName</th>
-            <th>LastName</th>
-            <th>Sex</th>
-            <th>Birthday</th>
 
-        </tr>
-    </thead>
-    <tbody>
 
-        @if (Model == null)
-        {
-            <tr>
-                <td colspan="7" class="text-center">No Model Data</td>
-            </tr>
-        }
-        else
-        {
-            @foreach (var p in Model)
-            {
-                <tr>
-                    <td>@p.id</td>
-                    <td>@p.FirstName</td>
-                    <td>@p.LastName</td>
-                    <td>@p.Sex</td>
-                    <td>@string.Format("{0: dd/mm/yyyy}", p.Birthday)</td>
 
-                    <td><a asp-action="Update" asp-route-id="@p.id">Update</a></td>
-                    <td>
-                        <form asp-action="Delete" method="post" asp-route-id="@p.id">
-                            <button>Delete</button>
-                        </form>
-                    </td>
-                </tr>
+
+<script type="text/javascript" language="javascript">
+
+
+
+
+
+
+
+
+
+
+    function GetConversationList() {
+
+        $.post(
+                '/../Conversation/Edit',
+                $("#updateForm").serialize(),
+                function (data) {
+                    $("#ConversationDiv").show();
+                    $("#ConversationFollowUpDiv").hide();
+
+                    $("#ConversationDiv").html('');
+                    $("#ConversationDiv").html(data);
+
+
+                })
+
             }
-        }
-    </tbody>
-</table>
 
+            function SetFilter() {
+
+                var table2_Props = {
+                    col_0: "none",
+                    col_1: "none",
+                    col_2: "select",
+                    col_3: "select",
+                    col_4: "select",
+                    col_5: "none",
+                    col_6: "none",
+                    display_all_text: " [ בחר הכל ] ",
+                    sort_select: true
+                };
+                setFilterGrid("CreateConversationTable", table2_Props);
+
+            }
+
+
+            $(document).ready(function () {
+             //   $("#CreateConversationTable").colResizable();
+
+      //  setFilterGrid("CreateConversationTable");
+
+//        var table2_Props = {
+//            col_0: "none",
+//            col_1: "none",
+//            col_2: "select",
+//            col_3: "select",
+//            col_4: "select",
+//            col_5: "none",
+//            col_6: "none",
+//            display_all_text: " [ בחר הכל ] ",
+//            sort_select: true
+//        };
+//        setFilterGrid("CreateConversationTable", table2_Props);
+
+
+
+});
+</script>
+
+
+
+
+
+
+@if (Model.ClientSerial != null)
+{
+    <p>
+        <a onclick="GetDataToColorbobByParams({clientSerial:@Model.ClientSerial,meetingSerial:0},'/Conversation/CreateNew', setColorBox)" href="javascript:;">שיחה חדשה </a>
+        @*    @Html.ActionLink("שיחה חדשה", "CreateNew", "Conversation", new { clientSerial = Model.ClientSerial, meetingSerial = 0 }, new { @class = "editClient" }) *@
+        @*  @Html.ActionLink("שיחה חדשה", "Create", "Conversation", new { clientSerial = Model.ClientSerial, meetingSerial = 0 }, new { onclick = "return ShowEdit(this);" }) *@
+
+        &nbsp
+        <a onclick="GetDataToColorbobByParams({typeSearch:1,id:@Model.ClientSerial},'/Conversation/ConversationsWithFollowup', setColorBox)" href="javascript:;">שיחות כולל מעקב </a>
+
+        @* @Html.ActionLink("שיחות כולל מעקב", "ConversationsWithFollowupToExcel", "Conversation", new { id = Model.ClientSerial }, null)*@
+        &nbsp
+        @Html.ActionLink("שלח לאקסל", "GetConversationsWithFollowupCsv", "Conversation", new { id = Model.ClientSerial, fullName = FullName }, null)
+        &nbsp
+        <a href="#" onclick="PrintContent('printConversations')"> הדפס</a>
+        &nbsp
+
+
+        @* @Ajax.ActionLink("פילטר", "ConversationListFiltered", "Conversation",
+            new { id = Model.ClientSerial },
+             new AjaxOptions()
+             {
+                 HttpMethod = "Get",
+                 UpdateTargetId = "printConversations",
+                 OnSuccess = "OpenConversationDiv"
+             })*@
+
+    </p>
+}
+
+
+<div id="printConversations">
+    @Html.Partial("~/Views/Conversation/ConversationList.cshtml", Model.ConversationWithParamList)
+   
+</div>
+@*</div>*@
